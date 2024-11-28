@@ -29,11 +29,11 @@ const CONFIG = {
     },
     HISTORY: {
         DAYS_TO_KEEP: 7,
-        READINGS_PER_DAY: 24  // Store hourly readings
+        READINGS_PER_DAY: 24 
     }
 };
 
-// Theme Manager with improved state management
+
 class ThemeManager {
     constructor() {
         this.theme = localStorage.getItem('theme') || 'light';
@@ -54,10 +54,10 @@ class ThemeManager {
     }
 
     initializeTheme() {
-        // Ensure theme is applied before creating toggle
+      
         this.applyTheme();
         
-        // Create toggle only if it doesn't exist
+       
         if (!document.querySelector('.theme-toggle')) {
             this.createThemeToggle();
         }
@@ -682,7 +682,7 @@ class AirQualityMonitor {
     }
 
     updateMapTheme(theme) {
-        // Implementation for updating map styles based on theme
+        
     }
 
     // Utility Methods
@@ -708,14 +708,14 @@ class AirQualityMonitor {
     }
 }
 
-// Initialize application
+
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.dashboard')) {
         new AirQualityMonitor();
     }
 });
 
-// Export for testing
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         AirQualityMonitor,
