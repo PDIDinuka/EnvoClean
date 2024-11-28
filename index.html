@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="https://envoclean.info/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://envoclean.info/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="https://envoclean.info/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://envoclean.info/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="EnvoClean" />
+    <link rel="manifest" href="https://envoclean.info/favicon/site.webmanifest" />
+</head>
+<body>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyD0VXlmzOn5QFzJZGseZB2KvLJhytuQXoc",
+          authDomain: "envoclean-2024.firebaseapp.com",
+          databaseURL: "https://envoclean-2024-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "envoclean-2024",
+          storageBucket: "envoclean-2024.firebasestorage.app",
+          messagingSenderId: "968166026934",
+          appId: "1:968166026934:web:4b87ae19574bc4b5b40017"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // getting reference to the database
+	    var database = firebase.database();
+
+        //getting reference to the data we want
+        var dataRef1 = database.ref('sensors/humidity');
+        var dataRef2 = database.ref('sensors/temperature');
+        var dataRef3 = database.ref('sensors/pm2_5');
+        var dataRef4 = database.ref('sensors/pm10');
+        var dataRef5 = database.ref('sensors/co2');
+        var dataRef6 = database.ref('sensors/ch2o');
+        var dataRef7 = database.ref('sensors/o3');
+        var dataRef8 = database.ref('sensors/co');
+        var dataRef9 = database.ref('sensors/no2');
+
+        //fetch the data
+	  dataRef1.on('value', function(getdata1){
+	  	var humi = getdata1.val();
+	  	document.getElementById('humidity').innerHTML = humi + " %";
+	  })
+
+	   dataRef2.on('value', function(getdata2){
+	  	var temp = getdata2.val();
+	  	document.getElementById('temperature').innerHTML = temp + " &#8451;";
+	  })
+
+      dataRef3.on('value', function(getdata3){
+	  	var pm2_5 = getdata3.val();
+	  	document.getElementById('pm2_5').innerHTML = pm2_5 + " µg/m³";
+	  })
+
+      dataRef4.on('value', function(getdata4){
+	  	var pm10 = getdata4.val();
+	  	document.getElementById('pm10').innerHTML = pm10 + " µg/m³";
+	  })
+
+      dataRef5.on('value', function(getdata5){
+	  	var co2 = getdata5.val();
+	  	document.getElementById('co2').innerHTML = co2 + " ppm";
+	  })
+
+      dataRef6.on('value', function(getdata6){
+	  	var ch2o = getdata6.val();
+	  	document.getElementById('ch2o').innerHTML = ch2o + " ppm";
+	  })
+
+      dataRef7.on('value', function(getdata7){
+	  	var o3 = getdata7.val();
+	  	document.getElementById('o3').innerHTML = o3 + " ppb";
+	  })
+
+      dataRef8.on('value', function(getdata8){
+	  	var co = getdata8.val();
+	  	document.getElementById('co').innerHTML = co + " ppm";
+	  })
+
+      dataRef9.on('value', function(getdata9){
+	  	var no2 = getdata9.val();
+	  	document.getElementById('no2').innerHTML = no2 + " ppm";
+	  })
+
+      </script>
+<header class="nav-header">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="https://envoclean.info/Logo.png" alt="Logo" class="logo-image">
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="nav-link">Monitoring</a></li>
+                <li><a href="sensors.html" class="nav-link">Sensor Details</a></li>
+                <li><a href="about_us.html" class="nav-link">About Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <main>
+        <div class="dashboard">
+            <div class="aqi-main">
+                <div class="aqi-meter">
+                    <h2>Air Quality Index</h2>
+                    <div class="meter-circle">
+                        <span class="value">0</span>
+                        <span class="label">AQI</span>
+                    </div>
+                    <div class="aqi-status">Good</div>
+                </div>
+                <div class="location-info">
+                    <h3>Monitoring Unit Location</h3>
+                    <p id="location-name">Loading...</p>
+                    <p id="last-updated">Last Updated: --:--</p>
+                </div>
+            </div>
+
+            
+
+            <div class="parameters-grid">
+                <div class="parameter-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperature</h3>
+                    <span class="value" id="temperature">0°C</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Humidity</h3>
+                    <span class="value" id="humidity">0%</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>PM2.5</h3>
+                    <span class="value" id="pm2_5">0 µg/m³</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>PM10</h3>
+                    <span class="value" id="pm10">0 µg/m³</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-smoking"></i>
+                    <h3>CO<sub>2</sub></h3>
+                    <span class="value" id="co2">0 ppm</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>CH<sub>2</sub>O</h3>
+                    <span class="value" id="ch2o">0 ppm</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>O<sub>3</sub></h3>
+                    <span class="value" id="o3">0 ppb</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-smog"></i>
+                    <h3>CO</h3>
+                    <span class="value" id="co">0 ppm</span>
+                </div>
+                <div class="parameter-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>NO<sub>2</sub></h3>
+                    <span class="value" id="no2">0 ppb</span>
+                </div>
+            </div>
+            <div class="historical-data">
+                <h2>AQI History (Past 7 Days)</h2>
+                <div id="aqi-history-chart" class="chart-container"></div>
+            </div>
+
+            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+                        padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                        border-radius: 8px; will-change: transform;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGXgTvRpps/77K8q8mD0_SzHVbPUjashw/view?embed">
+                </iframe>
+            </div>
+
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Air Quality Monitoring System 2024</h4>
+                <p>Real-time air quality monitoring for a healthier environment</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Monitoring</a></li>
+                    <li><a href="sensors.html">Sensor Details</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Air Quality Monitoring System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

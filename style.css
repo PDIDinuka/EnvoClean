@@ -1,0 +1,1067 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+}
+
+nav ul li a.active {
+    background-color: #34495e;
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dashboard {
+    display: grid;
+    gap: 2rem;
+}
+
+/* AQI Meter Styles */
+.aqi-main {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.aqi-meter {
+    text-align: center;
+    flex: 1;
+}
+
+.aqi-meter h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.meter-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #00e400 0% 50%,
+        #ff0 50% 100%,
+        #ff7e00 100% 150%,
+        #ff0000 150% 200%
+    );
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.meter-circle::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: white;
+    border-radius: 50%;
+}
+
+.meter-circle .value {
+    font-size: 3rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.meter-circle .label {
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.aqi-status {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.location-info {
+    text-align: right;
+    flex: 1;
+}
+
+.location-info h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.location-info p {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Parameters Grid Styles */
+.parameters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.parameter-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.parameter-card:hover {
+    transform: translateY(-5px);
+}
+
+.parameter-card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.parameter-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.parameter-card .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* Map Styles */
+.map-container {
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+/* Sensor Details Page Styles */
+.sensors-page {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sensors-page h1 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.sensor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.sensor-table th,
+.sensor-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.sensor-table th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.sensor-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.status.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Maintenance Schedule Styles */
+.maintenance-schedule {
+    margin-top: 2rem;
+}
+
+.maintenance-schedule h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.schedule-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.schedule-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.schedule-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-card p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 2rem 1rem 1rem;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .aqi-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .location-info {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .parameter-card {
+        min-width: 100%;
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.critical-value {
+    animation: pulse 2s infinite;
+}
+
+/* Dark Mode Variables */
+:root {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #666666;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --header-bg: #2c3e50;
+    --header-text: #ffffff;
+    --card-hover-bg: #f8f9fa;
+    --border-color: #ddd;
+    --schedule-card-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    --header-bg: #000000;
+    --header-text: #ffffff;
+    --card-hover-bg: #3d3d3d;
+    --border-color: #404040;
+    --schedule-card-bg: #2d2d2d;
+}
+
+/* Update existing styles to use variables */
+body {
+    background-color: var(--bg-primary);
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+}
+
+.dashboard {
+    color: var(--text-primary);
+}
+
+.aqi-main, .parameter-card, .sensors-page {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: var(--card-shadow);
+}
+
+.parameter-card h3,
+.aqi-meter h2,
+.sensors-page h1,
+.maintenance-schedule h2 {
+    color: var(--text-primary);
+}
+
+.parameter-card .value {
+    color: var(--text-primary);
+}
+
+.sensor-table th {
+    background-color: var(--card-hover-bg);
+    color: var(--text-primary);
+}
+
+.sensor-table td {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.schedule-card {
+    background-color: var(--schedule-card-bg);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+}
+
+
+/* Sensor Details Table Dark Mode */
+[data-theme="dark"] .sensor-details table {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .sensor-details th,
+[data-theme="dark"] .sensor-details td {
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .sensor-details th {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+}
+
+[data-theme="dark"] .sensor-details tr:hover {
+    background-color: var(--card-hover-bg);
+}
+
+/* Status Indicators Dark Mode */
+[data-theme="dark"] .status.active {
+    background-color: #1b4332;
+    color: #4ade80;
+}
+
+/* Maintenance Schedule Cards Dark Mode */
+[data-theme="dark"] .maintenance-schedule {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .schedule-cards {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .schedule-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .schedule-card h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .schedule-card p {
+    color: var(--text-secondary);
+}
+
+/* Table Styles Enhancement for Dark Mode */
+.sensor-details table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sensor-details th,
+.sensor-details td {
+    padding: 1rem;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+/* Status Badge Enhancement */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Maintenance Schedule Enhancement */
+.schedule-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.schedule-card {
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Page Title Enhancement */
+.sensors-page h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.sensors-page h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+/* Section Title Enhancement */
+.maintenance-schedule h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.maintenance-schedule h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+/* Table Header Row Enhancement */
+.sensor-details thead tr {
+    background-color: var(--header-bg);
+}
+
+[data-theme="dark"] .sensor-details thead tr {
+    background-color: var(--header-bg);
+}
+
+/* Table Cell Border Enhancement */
+.sensor-details td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Last Row Border Removal */
+.sensor-details tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Hover Effect */
+.sensor-details tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .sensor-details {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .sensor-details table {
+        min-width: 800px;
+    }
+}
+
+/* AQI Meter Circle Fix */
+.meter-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #00e400 0% 50%,
+        #ff0 50% 100%,
+        #ff7e00 100% 150%,
+        #ff0000 150% 200%
+    );
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.meter-circle::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+}
+
+.meter-circle .value,
+.meter-circle .label {
+    position: relative;
+    z-index: 2;
+    color: var(--text-primary);
+}
+
+/* Theme Toggle Button Fix */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background-color: #4a5568;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+}
+
+/* Ensure proper text contrast in dark mode */
+[data-theme="dark"] .meter-circle .value,
+[data-theme="dark"] .meter-circle .label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .aqi-status {
+    color: inherit;
+}
+
+/* Fix for status colors in dark mode */
+[data-theme="dark"] .status {
+    border: 1px solid var(--border-color);
+}
+
+/* Make sure the theme toggle is always visible */
+body {
+    position: relative;
+    min-height: 100vh;
+}
+/* Sensor Details Table Styles */
+.sensor-details table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sensor-details th,
+.sensor-details td {
+    padding: 1rem;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.sensor-details thead tr {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+}
+
+[data-theme="dark"] .sensor-details thead tr {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+}
+
+.sensor-details td {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.sensor-details tr:last-child td {
+    border-bottom: none;
+}
+
+.sensor-details tbody tr:hover {
+    background-color: var(--card-hover-bg);
+}
+/* Map Styles */
+.map-container {
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+[data-theme="dark"] #map {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Responsive Sensor Details Table */
+@media (max-width: 768px) {
+    .sensor-details {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sensor-details table {
+        min-width: 800px;
+    }
+
+    .sensor-details th,
+    .sensor-details td {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sensor-details th,
+    .sensor-details td {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .sensor-details th,
+    .sensor-details td {
+        padding: 1.25rem;
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Updated Navigation Styles */
+.nav-header {
+    background-color: var(--header-bg);
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.logo {
+    color: var(--header-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li {
+    margin: 0 1rem;
+}
+
+.nav-menu ul li a {
+    color: var(--header-text);
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--header-text);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--header-text);
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--header-bg);
+        padding: 1rem 0;
+        display: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .nav-menu.active {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul li {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 0.75rem;
+    }
+
+    /* Hamburger Animation */
+    .menu-toggle.active .hamburger {
+        background-color: transparent;
+    }
+
+    .menu-toggle.active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .menu-toggle.active .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+}
+.logo-image {
+    max-height: 50px; /* Set the maximum height for larger screens */
+  }
+  
+  @media (max-width: 768px) {
+    .logo-image {
+      max-height: 50px; /* Set a smaller maximum height for mobile screens */
+    }
+  }
+
+  header {
+    padding: 0.001rem 1rem; /* Reduced padding */
+  }
+  
+  .logo {
+    font-size: 0.001rem; /* Reduced font-size */
+  }
+  
+  .nav-menu ul li a {
+    font-size: 1rem; /* Reduced nav link font-size */
+    padding: 0.1rem 0.75rem; /* Reduced nav link padding */
+  }
+
+  /* Connection Status Styles */
+  .connection-status {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.connection-status.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.connection-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Hitorical data styles */
+.historical-data {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    width: 100%;
+    height: 250px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.value-label {
+    font-size: 12px;
+    fill: var(--text-color);
+    font-weight: bold;
+}
+
+.date-label {
+    font-size: 10px;
+    fill: var(--text-color);
+    
+}
+
+.data-point circle:hover {
+    r: 6;
+    cursor: pointer;
+}
+
+/* Add responsive styling */
+@media (max-width: 768px) {
+    .historical-data {
+        padding: 15px;
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    .value-label, .date-label {
+        font-size: 9px;
+    }
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] .historical-data {
+    background: var(--card-bg-dark, #1a1a1a);
+}
+
+[data-theme='dark'] line {
+    stroke: #444;
+}
+
+[data-theme='dark'] .value-label,
+[data-theme='dark'] .date-label {
+    fill: var(--text-color-dark, #fff);
+}

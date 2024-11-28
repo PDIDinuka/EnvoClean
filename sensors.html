@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Details - AQM System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome for theme toggle icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="https://envoclean.info/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://envoclean.info/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="https://envoclean.info/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://envoclean.info/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="EnvoClean" />
+    <link rel="manifest" href="https://envoclean.info/favicon/site.webmanifest" />
+</head>
+<body>
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="https://envoclean.info/Logo.png" alt="Logo" class="logo-image"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Monitoring</a></li>
+                    <li><a href="sensors.html" class="nav-link">Sensor Details</a></li>
+                    <li><a href="about_us.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" >
+        <div class="sensors-page">
+            <h1>Sensor Details</h1>
+
+            <div class="sensor-details">
+                <table style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width:16%">Parameter</th>
+                            <th style="width:16%">Sensor Type</th>
+                            <th style="width:18%">Range</th>
+                            <th style="width:16%">Accuracy</th>
+                            <th style="width:16%">Status</th>
+                            <th style="width:18%">Last Calibration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CO<sub>2</sub></td>
+                            <td>NDIR Sensor</td>
+                            <td>0-5000 ppm</td>
+                            <td>±50 ppm</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>PM2.5</td>
+                            <td>Laser Particle Sensor</td>
+                            <td>0-1000 µg/m³</td>
+                            <td>±15%</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>CH<sub>2</sub>O</td>
+                            <td>Electrochemical Sensor</td>
+                            <td>0-6.250 mg/m³</td>
+                            <td>±20%</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>O<sub>3</sub></td>
+                            <td>Metal Oxide Sensor</td>
+                            <td>0-10 ppm</td>
+                            <td>±20%</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>CO</td>
+                            <td>Electrochemical Sensor</td>
+                            <td>0-500 ppm</td>
+                            <td>±0.1 ppm</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>TVOC</td>
+                            <td>MOX Sensor</td>
+                            <td>0-3 grades</td>
+                            <td>±1% /year</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>NO<sub>2</sub></td>
+                            <td>Electrochemical Sensor</td>
+                            <td>0.1-10 ppm</td>
+                            <td>±15 ppb</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>Temperature</td>
+                            <td>Digital Sensor</td>
+                            <td>-20-65 ℃</td>
+                            <td>±0.5°C</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                        <tr>
+                            <td>Humidity</td>
+                            <td>Digital Sensor</td>
+                            <td>0-100%RH</td>
+                            <td>±3%RH</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>2024-11-12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="maintenance-schedule">
+                <h2>Maintenance Schedule</h2>
+                <div class="schedule-cards">
+                    <div class="schedule-card">
+                        <h3>Next Calibration</h3>
+                        <p>2025-04-12</p>
+                    </div>
+                    <div class="schedule-card">
+                        <h3>System Check</h3>
+                        <p>2024-11-25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Air Quality Monitoring System</h4>
+                <p>Real-time air quality monitoring for a healthier environment</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Monitoring</a></li>
+                    <li><a href="sensors.html">Sensor Details</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 Air Quality Monitoring System. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="script.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>
