@@ -73,7 +73,7 @@ class ThemeManager {
         button.className = 'theme-toggle';
         button.setAttribute('aria-label', 'Toggle theme');
         
-        // Add Font Awesome script if not already present
+       
         if (!document.querySelector('link[href*="font-awesome"]')) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
