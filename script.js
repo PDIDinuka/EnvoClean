@@ -521,16 +521,7 @@ class AirQualityMonitor {
                             >${p.value}</text>
                         </g>
                     `).join('')}
-                    
-                    <!-- X-axis labels -->
-                    ${points.map(p => `
-                        <text
-                            x="${p.x}"
-                            y="${chartHeight + 20}"
-                            text-anchor="middle"
-                            class="date-label"
-                        >${p.date}</text> 
-                    `).join('')}
+                <!-- remove date cause not working --> 
                 </g>
             </svg>
         `;
