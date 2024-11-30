@@ -1,4 +1,4 @@
-// Constants and Configuration
+
 const CONFIG = {
     MAP: {
         DEFAULT_VIEW: [6.817545, 80.045003],
@@ -29,11 +29,11 @@ const CONFIG = {
     },
     HISTORY: {
         DAYS_TO_KEEP: 7,
-        READINGS_PER_DAY: 24  // Store hourly readings
+        READINGS_PER_DAY: 24  
     }
 };
 
-// Theme Manager with improved state management
+
 class ThemeManager {
     constructor() {
         this.theme = localStorage.getItem('theme') || 'light';
@@ -54,10 +54,10 @@ class ThemeManager {
     }
 
     initializeTheme() {
-        // Ensure theme is applied before creating toggle
+       
         this.applyTheme();
         
-        // Create toggle only if it doesn't exist
+       
         if (!document.querySelector('.theme-toggle')) {
             this.createThemeToggle();
         }
@@ -73,7 +73,7 @@ class ThemeManager {
         button.className = 'theme-toggle';
         button.setAttribute('aria-label', 'Toggle theme');
         
-        // Add Font Awesome script if not already present
+    
         if (!document.querySelector('link[href*="font-awesome"]')) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -84,7 +84,7 @@ class ThemeManager {
         this.updateToggleButton(button);
         button.addEventListener('click', () => this.toggleTheme());
         
-        // Insert button after the navigation if it exists, otherwise append to body
+        
         const nav = document.querySelector('nav') || document.body.firstChild;
         nav.parentNode.insertBefore(button, nav.nextSibling);
     }
@@ -103,12 +103,12 @@ class ThemeManager {
     }
 }
 
-// Initialize theme manager when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
 });
 
-// Simplified AQI Calculator focused on PM2.5
+
 class AQICalculator {
     static BREAKPOINTS = {
         PM2_5: [
@@ -305,7 +305,7 @@ class AQICalculator {
     }
 }
 
-// Main Application Class
+
 class AirQualityMonitor {
     constructor() {
         this.database = null;
@@ -320,7 +320,7 @@ class AirQualityMonitor {
             });
     }
 
-    // Initialization Methods
+   
     async initialize() {
         this.initializeFirebase();
         await this.initializeMap();
@@ -349,7 +349,7 @@ class AirQualityMonitor {
                         .openPopup();
     }
 
-    // Sensor Data Management
+    
     setupSensorListeners() {
         Object.entries(CONFIG.SENSORS.UNITS).forEach(([sensorKey, unit]) => {
             const ref = this.database.ref(`sensors/${sensorKey}`);
@@ -383,13 +383,13 @@ class AirQualityMonitor {
         const hourKey = now.getHours();
 
         try {
-            // Store the new reading
+            
             await this.database.ref(`aqi_history/${dayKey}/${hourKey}`).set({
                 timestamp,
                 value: aqiValue
             });
 
-            // Clean up old data
+           
             this.cleanupOldData();
         } catch (error) {
             console.error('Error storing AQI reading:', error);
@@ -442,25 +442,25 @@ class AirQualityMonitor {
         const chartWidth = chartContainer.clientWidth - margin.left - margin.right;
         const chartHeight = 200 - margin.top - margin.bottom;
 
-        // Create points for the line
+        
         const points = data.map((d, i) => ({
             x: (i * chartWidth) / (data.length - 1),
             y: chartHeight - ((d.aqi / Math.max(...data.map(d => d.aqi))) * chartHeight),
             value: d.aqi,
             date: (() => {
-                const date = new Date(d.date); // Convert to Date object
-                const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensure 2 digits for month
-                const day = String(date.getDate()).padStart(2, '0'); // Ensure 2 digits for day
-                return `${month}-${day}`; // Format as MM-DD
+                const date = new Date(d.date); 
+                const month = String(date.getMonth() + 1).padStart(2, '0'); 
+                const day = String(date.getDate()).padStart(2, '0'); 
+                return `${month}-${day}`; 
             })()
         }));
 
-        // Create the line path
+        
         const linePath = points
             .map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`)
             .join(' ');
 
-        // Create gradient for the line
+ 
         const gradientId = 'line-gradient-' + Date.now();
 
         const svg = `
@@ -584,10 +584,10 @@ class AirQualityMonitor {
             }
         });
 
-        // After calculating AQI, store it
+        
         this.storeAQIReading(aqiResult.overallAQI);
         
-        // Update historical chart
+        
         this.fetchHistoricalData();
     
     }
@@ -627,7 +627,7 @@ class AirQualityMonitor {
         });
     }
 
-    // Location Services
+   
     initializeLocationServices() {
         if (!navigator.geolocation) {
             this.handleLocationError(new Error('Geolocation not supported'));
@@ -671,7 +671,7 @@ class AirQualityMonitor {
         }
     }
 
-    // Theme Management
+  
     initializeThemeManager() {
         this.themeManager = new ThemeManager();
         this.themeManager.subscribe(theme => {
@@ -682,10 +682,10 @@ class AirQualityMonitor {
     }
 
     updateMapTheme(theme) {
-        // Implementation for updating map styles based on theme
+      
     }
 
-    // Utility Methods
+   
     formatPollutantName(pollutant) {
         if (!pollutant) return 'None';
         
@@ -708,14 +708,14 @@ class AirQualityMonitor {
     }
 }
 
-// Initialize application
+
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.dashboard')) {
         new AirQualityMonitor();
     }
 });
 
-// Export for testing
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         AirQualityMonitor,

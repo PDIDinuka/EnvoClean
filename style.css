@@ -402,7 +402,7 @@ footer {
     --schedule-card-bg: #2d2d2d;
 }
 
-/* Update existing styles to use variables */
+
 body {
     background-color: var(--bg-primary);
 }
@@ -645,7 +645,7 @@ header {
     }
 }
 
-/* AQI Meter Circle Fix */
+/* AQI Meter Circle*/
 .meter-circle {
     position: relative;
     width: 200px;
@@ -680,7 +680,7 @@ header {
     color: var(--text-primary);
 }
 
-/* Theme Toggle Button Fix */
+/* Theme Toggle Button*/
 .theme-toggle {
     position: fixed;
     bottom: 2rem;
@@ -962,26 +962,26 @@ body {
     }
 }
 .logo-image {
-    max-height: 50px; /* Set the maximum height for larger screens */
+    max-height: 50px; 
   }
   
   @media (max-width: 768px) {
     .logo-image {
-      max-height: 50px; /* Set a smaller maximum height for mobile screens */
+      max-height: 50px; 
     }
   }
 
   header {
-    padding: 0.001rem 1rem; /* Reduced padding */
+    padding: 0.001rem 1rem; 
   }
   
   .logo {
-    font-size: 0.001rem; /* Reduced font-size */
+    font-size: 0.001rem; 
   }
   
   .nav-menu ul li a {
-    font-size: 1rem; /* Reduced nav link font-size */
-    padding: 0.1rem 0.75rem; /* Reduced nav link padding */
+    font-size: 1rem; 
+    padding: 0.1rem 0.75rem; 
   }
 
   /* Connection Status Styles */
@@ -1037,7 +1037,7 @@ body {
     cursor: pointer;
 }
 
-/* Add responsive styling */
+
 @media (max-width: 768px) {
     .historical-data {
         padding: 15px;
