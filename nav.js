@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.toggle('active');
     });
     
-   
+
     document.addEventListener('click', function(event) {
         const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
         
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
         }
     });
-    
     
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {

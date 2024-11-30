@@ -29,7 +29,7 @@ const CONFIG = {
     },
     HISTORY: {
         DAYS_TO_KEEP: 7,
-        READINGS_PER_DAY: 24  
+        READINGS_PER_DAY: 24  // Store hourly readings
     }
 };
 
@@ -54,7 +54,7 @@ class ThemeManager {
     }
 
     initializeTheme() {
-       
+        // Ensure theme is applied before creating toggle
         this.applyTheme();
         
        
@@ -73,7 +73,7 @@ class ThemeManager {
         button.className = 'theme-toggle';
         button.setAttribute('aria-label', 'Toggle theme');
         
-    
+        // Add Font Awesome script if not already present
         if (!document.querySelector('link[href*="font-awesome"]')) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -521,16 +521,7 @@ class AirQualityMonitor {
                             >${p.value}</text>
                         </g>
                     `).join('')}
-                    
-                    <!-- X-axis labels -->
-                    ${points.map(p => `
-                        <text
-                            x="${p.x}"
-                            y="${chartHeight + 20}"
-                            text-anchor="middle"
-                            class="date-label"
-                        >${p.date}</text> 
-                    `).join('')}
+                <!-- remove date cause not working --> 
                 </g>
             </svg>
         `;
@@ -682,7 +673,7 @@ class AirQualityMonitor {
     }
 
     updateMapTheme(theme) {
-      
+        // Implementation for updating map styles based on theme
     }
 
    
